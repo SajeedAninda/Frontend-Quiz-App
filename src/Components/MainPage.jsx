@@ -6,6 +6,7 @@ import htmlIcon from "../assets/icon-html.svg"
 import cssIcon from "../assets/icon-css.svg"
 import jsIcon from "../assets/icon-js.svg"
 import accessIcon from "../assets/icon-accessibility.svg"
+import { Link } from 'react-router-dom';
 
 const MainPage = () => {
     const [isDarkMode, setIsDarkMode] = useState(false);
@@ -49,33 +50,33 @@ const MainPage = () => {
                 </div>
 
                 <div className='flex-1'>
-                    <div className='bg-white w-full rounded-[22px] py-4 px-6 flex items-center gap-4 cursor-pointer hover:shadow-xl transition-all delay-75'>
+                    <Link to={"/html"} className='bg-white w-full rounded-[22px] py-4 px-6 flex items-center gap-4 cursor-pointer hover:shadow-xl transition-all delay-75'>
                         <img className='bg-[#fff1e9] p-1 rounded-md' src={htmlIcon} alt="" />
                         <p className='text-[28px] text-[#313e51] font-semibold'>
                             HTML
                         </p>
-                    </div>
+                    </Link>
 
-                    <div className='bg-white w-full rounded-[22px] py-4 px-6 flex items-center gap-4 mt-6 cursor-pointer hover:shadow-xl transition-all delay-75'>
+                    <Link to={"/css"} className='bg-white w-full rounded-[22px] py-4 px-6 flex items-center gap-4 mt-6 cursor-pointer hover:shadow-xl transition-all delay-75'>
                         <img className='bg-[#e0fdef] p-1 rounded-md' src={cssIcon} alt="" />
                         <p className='text-[28px] text-[#313e51] font-semibold'>
                             CSS
                         </p>
-                    </div>
+                    </Link>
 
-                    <div className='bg-white w-full rounded-[22px] py-4 px-6 flex items-center gap-4 mt-6 cursor-pointer hover:shadow-xl transition-all delay-75'>
+                    <Link to={"/javascript"} className='bg-white w-full rounded-[22px] py-4 px-6 flex items-center gap-4 mt-6 cursor-pointer hover:shadow-xl transition-all delay-75'>
                         <img className='bg-[#ebf0ff] p-1 rounded-md' src={jsIcon} alt="" />
                         <p className='text-[28px] text-[#313e51] font-semibold'>
                             Javascript
                         </p>
-                    </div>
+                    </Link>
 
-                    <div className='bg-white w-full rounded-[22px] py-4 px-6 flex items-center gap-4 mt-6 cursor-pointer hover:shadow-xl transition-all delay-75'>
+                    <Link to={"/accessibility"} className='bg-white w-full rounded-[22px] py-4 px-6 flex items-center gap-4 mt-6 cursor-pointer hover:shadow-xl transition-all delay-75'>
                         <img className='bg-[#f6e7ff] p-1 rounded-md' src={accessIcon} alt="" />
                         <p className='text-[28px] text-[#313e51] font-semibold'>
                             Accessibility
                         </p>
-                    </div>
+                    </Link>
                     
                 </div>
             </div>

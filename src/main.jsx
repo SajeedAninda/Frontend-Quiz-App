@@ -6,11 +6,31 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import Html from './Components/QuizPages/Html.jsx';
+import Css from './Components/QuizPages/Css.jsx';
+import Javascript from './Components/QuizPages/Javascript.jsx';
+import Accessibility from './Components/QuizPages/Accessibility.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App></App>,
+  },
+  {
+    path: "/html",
+    element: <Html></Html>,
+  },
+  {
+    path: "/css",
+    element: <Css></Css>,
+  },
+  {
+    path: "/javascript",
+    element: <Javascript></Javascript>,
+  },
+  {
+    path: "/accessibility",
+    element: <Accessibility></Accessibility>,
   },
 ]);
 
