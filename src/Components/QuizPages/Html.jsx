@@ -61,31 +61,39 @@ const Html = () => {
                 </div>
 
                 <div className='flex-1'>
-                    <div to={"/html"} className='bg-white dark:bg-[#3b4d66] w-full rounded-[22px] py-4 px-6 flex items-center gap-4 cursor-pointer hover:shadow-xl dark:hover:shadow-2xl transition-all delay-75'>
-                        <img className='bg-[#fff1e9] p-1 rounded-md' src={htmlIcon} alt="HTML Icon" />
-                        <p className='text-[28px] text-[#313e51] dark:text-white font-semibold'>
-                            HTML
+                    <div className='bg-white dark:bg-[#3b4d66] w-full rounded-[22px] py-4 px-6 flex items-center gap-8 cursor-pointer hover:shadow-xl dark:hover:shadow-2xl transition-all delay-75 border-[3px] border-transparent hover:border-[#A729f5] group'>
+                        <div className='text-[36px] text-[#3b4d66] py-1 px-4 bg-gray-200 dark:bg-white rounded-lg font-bold group-hover:bg-[#f6e7ff] group-hover:text-[#a729f5]'>
+                            A
+                        </div>
+                        <p className='text-[24px] text-[#313e51] dark:text-white font-medium'>
+                            Hyper Trainer Marking Language
                         </p>
                     </div>
 
-                    <div to={"/css"} className='bg-white dark:bg-[#3b4d66] w-full rounded-[22px] py-4 px-6 flex items-center gap-4 mt-6 cursor-pointer hover:shadow-xl dark:hover:shadow-2xl transition-all delay-75'>
-                        <img className='bg-[#e0fdef] p-1 rounded-md' src={cssIcon} alt="CSS Icon" />
-                        <p className='text-[28px] text-[#313e51] dark:text-white font-semibold'>
-                            CSS
+                    <div className='bg-white dark:bg-[#3b4d66] w-full rounded-[22px] py-4 px-6 flex items-center gap-8 cursor-pointer hover:shadow-xl dark:hover:shadow-2xl transition-all delay-75 border-[3px] border-transparent hover:border-[#A729f5] group mt-6'>
+                        <div className='text-[36px] text-[#3b4d66] py-1 px-4 bg-gray-200 dark:bg-white rounded-lg font-bold group-hover:bg-[#f6e7ff] group-hover:text-[#a729f5]'>
+                            B
+                        </div>
+                        <p className='text-[24px] text-[#313e51] dark:text-white font-medium'>
+                        Hyper Text Marketing Language
                         </p>
                     </div>
 
-                    <div to={"/javascript"} className='bg-white dark:bg-[#3b4d66] w-full rounded-[22px] py-4 px-6 flex items-center gap-4 mt-6 cursor-pointer hover:shadow-xl dark:hover:shadow-2xl transition-all delay-75'>
-                        <img className='bg-[#ebf0ff] p-1 rounded-md' src={jsIcon} alt="JavaScript Icon" />
-                        <p className='text-[28px] text-[#313e51] dark:text-white font-semibold'>
-                            Javascript
+                    <div className='bg-white dark:bg-[#3b4d66] w-full rounded-[22px] py-4 px-6 flex items-center gap-8 cursor-pointer hover:shadow-xl dark:hover:shadow-2xl transition-all delay-75 border-[3px] border-transparent hover:border-[#A729f5] group mt-6'>
+                        <div className='text-[36px] text-[#3b4d66] py-1 px-4 bg-gray-200 dark:bg-white rounded-lg font-bold group-hover:bg-[#f6e7ff] group-hover:text-[#a729f5]'>
+                            C
+                        </div>
+                        <p className='text-[24px] text-[#313e51] dark:text-white font-medium'>
+                        Hyper Text Markup Language
                         </p>
                     </div>
 
-                    <div to={"/accessibility"} className='bg-white dark:bg-[#3b4d66] w-full rounded-[22px] py-4 px-6 flex items-center gap-4 mt-6 cursor-pointer hover:shadow-xl dark:hover:shadow-2xl transition-all delay-75'>
-                        <img className='bg-[#f6e7ff] p-1 rounded-md' src={accessIcon} alt="Accessibility Icon" />
-                        <p className='text-[28px] text-[#313e51] dark:text-white font-semibold'>
-                            Accessibility
+                    <div className='bg-white dark:bg-[#3b4d66] w-full rounded-[22px] py-4 px-6 flex items-center gap-8 cursor-pointer hover:shadow-xl dark:hover:shadow-2xl transition-all delay-75 border-[3px] border-transparent hover:border-[#A729f5] group mt-6'>
+                        <div className='text-[36px] text-[#3b4d66] py-1 px-4 bg-gray-200 dark:bg-white rounded-lg font-bold group-hover:bg-[#f6e7ff] group-hover:text-[#a729f5]'>
+                            D
+                        </div>
+                        <p className='text-[24px] text-[#313e51] dark:text-white font-medium'>
+                        Hyper Text Markup Leveler
                         </p>
                     </div>
                 </div>
@@ -93,5 +101,5 @@ const Html = () => {
         </div>
     );
 };
- 
+
 export default Html;
