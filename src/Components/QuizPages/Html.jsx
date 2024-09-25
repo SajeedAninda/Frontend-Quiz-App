@@ -7,5 +7,5 @@ const Html = () => {
         </div>
     );
 };
-
+ 
 export default Html;
