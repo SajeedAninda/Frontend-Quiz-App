@@ -1,9 +1,10 @@
+import MainPage from "./Components/MainPage"
 
 function App() {
 
   return (
-    <div className="bg-red-400">
-      Hello
+    <div className="transition-all duration-300">
+      <MainPage></MainPage>
     </div>
   )
 }
