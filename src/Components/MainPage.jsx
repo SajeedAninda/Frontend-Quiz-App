@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { LuSun } from "react-icons/lu";
 import { GoMoon } from "react-icons/go";
+import bgLightPattern from "../assets/pattern-background-desktop-light.svg";
 
 const MainPage = () => {
     const [isDarkMode, setIsDarkMode] = useState(false);
@@ -10,7 +11,9 @@ const MainPage = () => {
     };
 
     return (
-        <div className='min-h-screen bg-[#f4f6fa] py-16'>
+        <div
+            className={`min-h-screen bg-no-repeat bg-cover py-16 bg-[#f4f6fa]`}
+            style={{ backgroundImage: `url(${bgLightPattern})` }}>
             <nav className="Navbar w-[80%] mx-auto flex justify-between">
                 <div className=""></div>
                 <div className='flex items-center gap-4'>
