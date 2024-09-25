@@ -10,6 +10,7 @@ import Html from './Components/QuizPages/Html.jsx';
 import Css from './Components/QuizPages/Css.jsx';
 import Javascript from './Components/QuizPages/Javascript.jsx';
 import Accessibility from './Components/QuizPages/Accessibility.jsx';
+import { ThemeProvider } from './Custom Hooks/ThemeContext.jsx';
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,9 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <ThemeProvider>
+      <RouterProvider router={router} />
+    </ThemeProvider>
+
   </StrictMode>,
 )

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { LuSun } from "react-icons/lu";
 import { GoMoon } from "react-icons/go";
 import bgLightPattern from "../assets/pattern-background-desktop-light.svg";
@@ -8,9 +8,10 @@ import cssIcon from "../assets/icon-css.svg";
 import jsIcon from "../assets/icon-js.svg";
 import accessIcon from "../assets/icon-accessibility.svg";
 import { Link } from 'react-router-dom';
+import { ThemeContext } from '../Custom Hooks/ThemeContext';
 
 const MainPage = () => {
-    const [isDarkMode, setIsDarkMode] = useState(false);
+    const { isDarkMode, toggleDarkMode } = useContext(ThemeContext);
 
     useEffect(() => {
         if (isDarkMode) {
@@ -18,11 +19,7 @@ const MainPage = () => {
         } else {
             document.documentElement.classList.remove('dark');
         }
-    }, [isDarkMode]);
-
-    const handleToggle = () => {
-        setIsDarkMode(!isDarkMode);
-    };
+    }, [isDarkMode])
 
     return (
         <div
@@ -36,7 +33,7 @@ const MainPage = () => {
                 <div className='flex items-center gap-4'>
                     <LuSun className='text-gray-500 dark:text-white w-[24px] h-[24px]' />
                     <button
-                        onClick={handleToggle}
+                        onClick={toggleDarkMode}
                         className='themeSwitcher w-[48px] h-[30px] rounded-2xl bg-[#979797] dark:bg-[#A729f5] flex items-center px-[0.15rem] cursor-pointer hover:bg-[#A729f5] transition-colors delay-50'
                     >
                         <div
