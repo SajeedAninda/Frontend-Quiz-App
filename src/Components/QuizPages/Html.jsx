@@ -4,13 +4,25 @@ import { GoMoon } from "react-icons/go";
 import bgLightPattern from "../../assets/pattern-background-desktop-light.svg";
 import bgDarkPattern from "../../assets/pattern-background-desktop-dark.svg";
 import htmlIcon from "../../assets/icon-html.svg";
-import cssIcon from "../../assets/icon-css.svg";
-import jsIcon from "../../assets/icon-js.svg";
-import accessIcon from "../../assets/icon-accessibility.svg";
 import { ThemeContext } from '../../Custom Hooks/ThemeContext';
 
 const Html = () => {
     const { isDarkMode, toggleDarkMode } = useContext(ThemeContext);
+    const [quizData, setQuizData] = useState(null);
+
+    useEffect(() => {
+        fetch('./data.json')
+            .then((response) => response.json())
+            .then((data) => {
+                const htmlQuiz = data.quizzes.find((quiz) => quiz.title === "HTML");
+                setQuizData(htmlQuiz);
+            })
+            .catch((error) => {
+                console.error("Error fetching quiz data:", error);
+            });
+    }, []);
+
+    console.log(quizData);
 
     useEffect(() => {
         if (isDarkMode) {
@@ -20,6 +32,9 @@ const Html = () => {
         }
     }, [isDarkMode]);
 
+    if (!quizData) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <div
@@ -29,8 +44,8 @@ const Html = () => {
             }}
         >
             <nav className="Navbar w-[80%] mx-auto flex justify-between">
-                <div className=" flex gap-4 items-center">
-                    <img className='bg-[#fff1e9] p-1 rounded-xl' src={htmlIcon} alt="" />
+                <div className="flex gap-4 items-center">
+                    <img className='bg-[#fff1e9] p-1 rounded-xl' src={htmlIcon} alt="HTML Icon" />
                     <p className='font-bold text-[28px] text-[#313e51] dark:text-white'>HTML</p>
                 </div>
                 <div className='flex items-center gap-4'>
@@ -50,49 +65,27 @@ const Html = () => {
             <div className="contentDiv w-[80%] mx-auto flex flex-col lg:flex-row justify-between gap-8 mt-20">
                 <div className="flex-1">
                     <p className='text-[#313e51] dark:text-white text-[22px] italic'>
-                        Question 1 of 10
+                        Question 1 of {quizData.questions.length}
                     </p>
                     <h3 className='text-[#313e51] dark:text-white text-[36px] font-semibold mt-10'>
-                        What does HTML stands for?
+                        {quizData.questions[0].question}
                     </h3>
                 </div>
 
                 <div className='flex-1'>
-                    <div className='bg-white dark:bg-[#3b4d66] w-full rounded-[22px] py-4 px-6 flex items-center gap-8 cursor-pointer hover:shadow-xl dark:hover:shadow-2xl transition-all delay-75 border-[3px] border-transparent hover:border-[#A729f5] group'>
-                        <div className='text-[36px] text-[#3b4d66] py-1 px-4 bg-gray-200 dark:bg-white rounded-lg font-bold group-hover:bg-[#f6e7ff] group-hover:text-[#a729f5]'>
-                            A
+                    {quizData.questions[0].options.map((option, index) => (
+                        <div
+                            key={index}
+                            className='bg-white dark:bg-[#3b4d66] w-full rounded-[22px] py-4 px-6 flex items-center gap-8 cursor-pointer hover:shadow-xl dark:hover:shadow-2xl transition-all delay-75 border-[3px] border-transparent hover:border-[#A729f5] group mt-6'
+                        >
+                            <div className='text-[36px] text-[#3b4d66] py-1 px-4 bg-gray-200 dark:bg-white rounded-lg font-bold group-hover:bg-[#f6e7ff] group-hover:text-[#a729f5]'>
+                                {String.fromCharCode(65 + index)}
+                            </div>
+                            <p className='text-[24px] text-[#313e51] dark:text-white font-medium'>
+                                {option}
+                            </p>
                         </div>
-                        <p className='text-[24px] text-[#313e51] dark:text-white font-medium'>
-                            Hyper Trainer Marking Language
-                        </p>
-                    </div>
-
-                    <div className='bg-white dark:bg-[#3b4d66] w-full rounded-[22px] py-4 px-6 flex items-center gap-8 cursor-pointer hover:shadow-xl dark:hover:shadow-2xl transition-all delay-75 border-[3px] border-transparent hover:border-[#A729f5] group mt-6'>
-                        <div className='text-[36px] text-[#3b4d66] py-1 px-4 bg-gray-200 dark:bg-white rounded-lg font-bold group-hover:bg-[#f6e7ff] group-hover:text-[#a729f5]'>
-                            B
-                        </div>
-                        <p className='text-[24px] text-[#313e51] dark:text-white font-medium'>
-                        Hyper Text Marketing Language
-                        </p>
-                    </div>
-
-                    <div className='bg-white dark:bg-[#3b4d66] w-full rounded-[22px] py-4 px-6 flex items-center gap-8 cursor-pointer hover:shadow-xl dark:hover:shadow-2xl transition-all delay-75 border-[3px] border-transparent hover:border-[#A729f5] group mt-6'>
-                        <div className='text-[36px] text-[#3b4d66] py-1 px-4 bg-gray-200 dark:bg-white rounded-lg font-bold group-hover:bg-[#f6e7ff] group-hover:text-[#a729f5]'>
-                            C
-                        </div>
-                        <p className='text-[24px] text-[#313e51] dark:text-white font-medium'>
-                        Hyper Text Markup Language
-                        </p>
-                    </div>
-
-                    <div className='bg-white dark:bg-[#3b4d66] w-full rounded-[22px] py-4 px-6 flex items-center gap-8 cursor-pointer hover:shadow-xl dark:hover:shadow-2xl transition-all delay-75 border-[3px] border-transparent hover:border-[#A729f5] group mt-6'>
-                        <div className='text-[36px] text-[#3b4d66] py-1 px-4 bg-gray-200 dark:bg-white rounded-lg font-bold group-hover:bg-[#f6e7ff] group-hover:text-[#a729f5]'>
-                            D
-                        </div>
-                        <p className='text-[24px] text-[#313e51] dark:text-white font-medium'>
-                        Hyper Text Markup Leveler
-                        </p>
-                    </div>
+                    ))}
                 </div>
             </div>
         </div>
