@@ -86,6 +86,9 @@ const Html = () => {
                             </p>
                         </div>
                     ))}
+                    <button className='w-full py-6 px-6 rounded-[22px] text-[28px] font-bold text-white bg-[#a729f5] hover:opacity-50 mt-6'>
+                        Submit
+                    </button>
                 </div>
             </div>
         </div>
