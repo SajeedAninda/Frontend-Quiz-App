@@ -5,6 +5,7 @@ import bgLightPattern from "../../assets/pattern-background-desktop-light.svg";
 import bgDarkPattern from "../../assets/pattern-background-desktop-dark.svg";
 import htmlIcon from "../../assets/icon-html.svg";
 import { ThemeContext } from '../../Custom Hooks/ThemeContext';
+import { Link } from 'react-router-dom';
 
 const Html = () => {
     const { isDarkMode, toggleDarkMode } = useContext(ThemeContext);
@@ -72,12 +73,19 @@ const Html = () => {
 
     if (showResult) {
         return (
-            <div className="min-h-screen flex items-center justify-center">
-                <div className="bg-white dark:bg-[#3b4d66] p-10 rounded-lg shadow-lg text-center">
+            <div className="min-h-screen bg-white dark:bg-[#3b4d66] flex items-center justify-center">
+                <div className="p-10 rounded-lg shadow-lg text-center">
                     <h2 className="text-4xl font-bold text-[#313e51] dark:text-white mb-4">Quiz Completed!</h2>
-                    <p className="text-2xl text-[#313e51] dark:text-white">
+                    <p className="text-2xl text-[#313e51] dark:text-white mb-10">
                         You got {result.correct} out of {quizData.questions.length} correct.
                     </p>
+
+                    <Link to={"/"}
+
+                        className='w-full py-6 px-6 rounded-[22px] text-[28px] font-bold text-white bg-[#a729f5] hover:opacity-50 mt-6'
+                    >
+                        Play Again
+                    </Link>
                 </div>
             </div>
         );
