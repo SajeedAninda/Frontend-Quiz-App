@@ -9,6 +9,11 @@ import { ThemeContext } from '../../Custom Hooks/ThemeContext';
 const Html = () => {
     const { isDarkMode, toggleDarkMode } = useContext(ThemeContext);
     const [quizData, setQuizData] = useState(null);
+    const [selectedOption, setSelectedOption] = useState(null);
+    const [isSubmitted, setIsSubmitted] = useState(false);
+    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+    const [result, setResult] = useState({ correct: 0, total: 0 });
+    const [showResult, setShowResult] = useState(false);
 
     useEffect(() => {
         fetch('./data.json')
@@ -22,8 +27,6 @@ const Html = () => {
             });
     }, []);
 
-    console.log(quizData);
-
     useEffect(() => {
         if (isDarkMode) {
             document.documentElement.classList.add('dark');
@@ -32,9 +35,55 @@ const Html = () => {
         }
     }, [isDarkMode]);
 
+    const handleOptionClick = (index) => {
+        if (!isSubmitted) {
+            setSelectedOption(index);
+        }
+    };
+
+    const handleSubmit = () => {
+        if (selectedOption === null) return;
+
+        setIsSubmitted(true);
+
+        const correctAnswer = quizData.questions[currentQuestionIndex].answer;
+        const selectedAnswer = quizData.questions[currentQuestionIndex].options[selectedOption];
+
+        if (selectedAnswer === correctAnswer) {
+            setResult((prev) => ({ ...prev, correct: prev.correct + 1, total: prev.total + 1 }));
+        } else {
+            setResult((prev) => ({ ...prev, total: prev.total + 1 }));
+        }
+    };
+
+    const handleNextQuestion = () => {
+        if (currentQuestionIndex < quizData.questions.length - 1) {
+            setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
+            setSelectedOption(null);
+            setIsSubmitted(false);
+        } else {
+            setShowResult(true);
+        }
+    };
+
     if (!quizData) {
         return <div>Loading...</div>;
     }
+
+    if (showResult) {
+        return (
+            <div className="min-h-screen flex items-center justify-center">
+                <div className="bg-white dark:bg-[#3b4d66] p-10 rounded-lg shadow-lg text-center">
+                    <h2 className="text-4xl font-bold text-[#313e51] dark:text-white mb-4">Quiz Completed!</h2>
+                    <p className="text-2xl text-[#313e51] dark:text-white">
+                        You got {result.correct} out of {quizData.questions.length} correct.
+                    </p>
+                </div>
+            </div>
+        );
+    }
+
+    const currentQuestion = quizData.questions[currentQuestionIndex];
 
     return (
         <div
@@ -65,29 +114,48 @@ const Html = () => {
             <div className="contentDiv w-[80%] mx-auto flex flex-col lg:flex-row justify-between gap-8 mt-20">
                 <div className="flex-1">
                     <p className='text-[#313e51] dark:text-white text-[22px] italic'>
-                        Question 1 of {quizData.questions.length}
+                        Question {currentQuestionIndex + 1} of {quizData.questions.length}
                     </p>
                     <h3 className='text-[#313e51] dark:text-white text-[36px] font-semibold mt-10'>
-                        {quizData.questions[0].question}
+                        {currentQuestion.question}
                     </h3>
                 </div>
 
                 <div className='flex-1'>
-                    {quizData.questions[0].options.map((option, index) => (
-                        <div
-                            key={index}
-                            className='bg-white dark:bg-[#3b4d66] w-full rounded-[22px] py-4 px-6 flex items-center gap-8 cursor-pointer hover:shadow-xl dark:hover:shadow-2xl transition-all delay-75 border-[3px] border-transparent hover:border-[#A729f5] group mt-6'
-                        >
-                            <div className='text-[36px] text-[#3b4d66] py-1 px-4 bg-gray-200 dark:bg-white rounded-lg font-bold group-hover:bg-[#f6e7ff] group-hover:text-[#a729f5]'>
-                                {String.fromCharCode(65 + index)}
+                    {currentQuestion.options.map((option, index) => {
+                        const correctAnswer = currentQuestion.answer;
+                        const isCorrect = isSubmitted && option === correctAnswer;
+                        const isWrong = isSubmitted && selectedOption === index && option !== correctAnswer;
+
+                        return (
+                            <div
+                                key={index}
+                                onClick={() => handleOptionClick(index)}
+                                className={`bg-white dark:bg-[#3b4d66] w-full rounded-[22px] py-4 px-6 flex items-center gap-8 cursor-pointer
+                                    ${selectedOption === index ? 'border-[#A729f5] border-[3px]' : 'border-transparent'} 
+                                    ${isCorrect ? 'border-green-500 dark:border-green-500' : ''} 
+                                    ${isWrong ? 'border-red-500 dark:border-red-500' : ''} 
+                                    hover:shadow-xl dark:hover:shadow-2xl transition-all delay-75 group mt-6`}
+                            >
+                                <div
+                                    className={`text-[36px] py-1 px-4 bg-gray-200 dark:bg-white rounded-lg font-bold
+                                        ${selectedOption === index ? 'bg-[#f6e7ff] text-[#a729f5]' : ''} 
+                                        ${isCorrect ? 'bg-green-500 dark:bg-green-500 text-white' : ''} 
+                                        ${isWrong ? 'bg-red-500 dark:bg-red-500 text-white' : ''}`}
+                                >
+                                    {String.fromCharCode(65 + index)}
+                                </div>
+                                <p className='text-[24px] text-[#313e51] dark:text-white font-medium'>
+                                    {option}
+                                </p>
                             </div>
-                            <p className='text-[24px] text-[#313e51] dark:text-white font-medium'>
-                                {option}
-                            </p>
-                        </div>
-                    ))}
-                    <button className='w-full py-6 px-6 rounded-[22px] text-[28px] font-bold text-white bg-[#a729f5] hover:opacity-50 mt-6'>
-                        Submit
+                        );
+                    })}
+                    <button
+                        onClick={isSubmitted ? handleNextQuestion : handleSubmit}
+                        className='w-full py-6 px-6 rounded-[22px] text-[28px] font-bold text-white bg-[#a729f5] hover:opacity-50 mt-6'
+                    >
+                        {isSubmitted ? (currentQuestionIndex < quizData.questions.length - 1 ? 'Next Question' : 'See Result') : 'Submit'}
                     </button>
                 </div>
             </div>
