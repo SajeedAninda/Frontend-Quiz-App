@@ -7,7 +7,7 @@ import htmlIcon from "../../assets/icon-html.svg";
 import { ThemeContext } from '../../Custom Hooks/ThemeContext';
 import { Link, useLocation } from 'react-router-dom';
 
-const Html = () => {
+const Quiz = () => {
     const { isDarkMode, toggleDarkMode } = useContext(ThemeContext);
     const [quizData, setQuizData] = useState(null);
     const [selectedOption, setSelectedOption] = useState(null);
@@ -175,4 +175,4 @@ const Html = () => {
     );
 };
 
-export default Html;
+export default Quiz;

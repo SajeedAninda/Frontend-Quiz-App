@@ -6,11 +6,8 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import Html from './Components/QuizPages/Html.jsx';
-import Css from './Components/QuizPages/Css.jsx';
-import Javascript from './Components/QuizPages/Javascript.jsx';
-import Accessibility from './Components/QuizPages/Accessibility.jsx';
 import { ThemeProvider } from './Custom Hooks/ThemeContext.jsx';
+import Quiz from './Components/QuizPages/Quiz.jsx';
 
 const router = createBrowserRouter([
   {
@@ -19,19 +16,19 @@ const router = createBrowserRouter([
   },
   {
     path: "/HTML",
-    element: <Html></Html>,
+    element: <Quiz></Quiz>,
   },
   {
     path: "/CSS",
-    element: <Html></Html>,
+    element: <Quiz></Quiz>,
   },
   {
     path: "/JavaScript",
-    element: <Html></Html>,
+    element: <Quiz></Quiz>,
   },
   {
     path: "/Accessibility",
-    element: <Html></Html>,
+    element: <Quiz></Quiz>,
   },
 ]);
 
