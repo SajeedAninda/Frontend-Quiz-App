@@ -5,7 +5,7 @@ import bgLightPattern from "../../assets/pattern-background-desktop-light.svg";
 import bgDarkPattern from "../../assets/pattern-background-desktop-dark.svg";
 import htmlIcon from "../../assets/icon-html.svg";
 import { ThemeContext } from '../../Custom Hooks/ThemeContext';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Html = () => {
     const { isDarkMode, toggleDarkMode } = useContext(ThemeContext);
@@ -16,12 +16,16 @@ const Html = () => {
     const [result, setResult] = useState({ correct: 0, total: 0 });
     const [showResult, setShowResult] = useState(false);
 
+    let location = useLocation();
+
+    let pathLocation = location.pathname.substring(1);
+
     useEffect(() => {
         fetch('./data.json')
             .then((response) => response.json())
             .then((data) => {
-                const htmlQuiz = data.quizzes.find((quiz) => quiz.title === "HTML");
-                setQuizData(htmlQuiz);
+                const foundQuizPath = data.quizzes.find((quiz) => quiz.title === `${pathLocation}`);
+                setQuizData(foundQuizPath);
             })
             .catch((error) => {
                 console.error("Error fetching quiz data:", error);

@@ -59,28 +59,28 @@ const MainPage = () => {
                 </div>
 
                 <div className='flex-1'>
-                    <Link to={"/html"} className='bg-white dark:bg-[#3b4d66] w-full rounded-[22px] py-4 px-6 flex items-center gap-4 cursor-pointer hover:shadow-xl dark:hover:shadow-2xl transition-all delay-75'>
+                    <Link to={"/HTML"} className='bg-white dark:bg-[#3b4d66] w-full rounded-[22px] py-4 px-6 flex items-center gap-4 cursor-pointer hover:shadow-xl dark:hover:shadow-2xl transition-all delay-75'>
                         <img className='bg-[#fff1e9] p-1 rounded-md' src={htmlIcon} alt="HTML Icon" />
                         <p className='text-[28px] text-[#313e51] dark:text-white font-semibold'>
                             HTML
                         </p>
                     </Link>
 
-                    <Link to={"/css"} className='bg-white dark:bg-[#3b4d66] w-full rounded-[22px] py-4 px-6 flex items-center gap-4 mt-6 cursor-pointer hover:shadow-xl dark:hover:shadow-2xl transition-all delay-75'>
+                    <Link to={"/CSS"} className='bg-white dark:bg-[#3b4d66] w-full rounded-[22px] py-4 px-6 flex items-center gap-4 mt-6 cursor-pointer hover:shadow-xl dark:hover:shadow-2xl transition-all delay-75'>
                         <img className='bg-[#e0fdef] p-1 rounded-md' src={cssIcon} alt="CSS Icon" />
                         <p className='text-[28px] text-[#313e51] dark:text-white font-semibold'>
                             CSS
                         </p>
                     </Link>
 
-                    <Link to={"/javascript"} className='bg-white dark:bg-[#3b4d66] w-full rounded-[22px] py-4 px-6 flex items-center gap-4 mt-6 cursor-pointer hover:shadow-xl dark:hover:shadow-2xl transition-all delay-75'>
+                    <Link to={"/JavaScript"} className='bg-white dark:bg-[#3b4d66] w-full rounded-[22px] py-4 px-6 flex items-center gap-4 mt-6 cursor-pointer hover:shadow-xl dark:hover:shadow-2xl transition-all delay-75'>
                         <img className='bg-[#ebf0ff] p-1 rounded-md' src={jsIcon} alt="JavaScript Icon" />
                         <p className='text-[28px] text-[#313e51] dark:text-white font-semibold'>
                             Javascript
                         </p>
                     </Link>
 
-                    <Link to={"/accessibility"} className='bg-white dark:bg-[#3b4d66] w-full rounded-[22px] py-4 px-6 flex items-center gap-4 mt-6 cursor-pointer hover:shadow-xl dark:hover:shadow-2xl transition-all delay-75'>
+                    <Link to={"/Accessibility"} className='bg-white dark:bg-[#3b4d66] w-full rounded-[22px] py-4 px-6 flex items-center gap-4 mt-6 cursor-pointer hover:shadow-xl dark:hover:shadow-2xl transition-all delay-75'>
                         <img className='bg-[#f6e7ff] p-1 rounded-md' src={accessIcon} alt="Accessibility Icon" />
                         <p className='text-[28px] text-[#313e51] dark:text-white font-semibold'>
                             Accessibility
