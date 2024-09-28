@@ -148,8 +148,8 @@ const Html = () => {
                                 <div
                                     className={`text-[36px] py-1 px-4 bg-gray-200 dark:bg-white rounded-lg font-bold
                                         ${selectedOption === index ? 'bg-[#f6e7ff] text-[#a729f5]' : ''} 
-                                        ${isCorrect ? 'bg-green-500 dark:bg-green-500 text-white' : ''} 
-                                        ${isWrong ? 'bg-red-500 dark:bg-red-500 text-white' : ''}`}
+                                        ${isCorrect ? 'bg-green-500 text-white dark:text-green-500' : ''} 
+                                        ${isWrong ? 'bg-red-500 text-white dark:text-red-500' : ''}`}
                                 >
                                     {String.fromCharCode(65 + index)}
                                 </div>
