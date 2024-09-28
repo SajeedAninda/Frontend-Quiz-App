@@ -4,6 +4,9 @@ import { GoMoon } from "react-icons/go";
 import bgLightPattern from "../../assets/pattern-background-desktop-light.svg";
 import bgDarkPattern from "../../assets/pattern-background-desktop-dark.svg";
 import htmlIcon from "../../assets/icon-html.svg";
+import cssIcon from "../../assets/icon-css.svg";
+import jsIcon from "../../assets/icon-js.svg";
+import accessIcon from "../../assets/icon-accessibility.svg";
 import { ThemeContext } from '../../Custom Hooks/ThemeContext';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -106,8 +109,19 @@ const Quiz = () => {
         >
             <nav className="Navbar w-[80%] mx-auto flex justify-between">
                 <div className="flex gap-4 items-center">
-                    <img className='bg-[#fff1e9] p-1 rounded-xl' src={htmlIcon} alt="HTML Icon" />
-                    <p className='font-bold text-[28px] text-[#313e51] dark:text-white'>HTML</p>
+                    <img
+                        className='bg-transparent p-1 rounded-xl'
+                        src={pathLocation === 'HTML' ? htmlIcon
+                            : pathLocation === 'CSS' ? cssIcon
+                                : pathLocation === 'JavaScript' ? jsIcon
+                                    : pathLocation === 'Accessibility' ? accessIcon
+                                        : defaultIcon
+                        }
+                        
+                    />
+                    <p className='font-bold text-[28px] text-[#313e51] dark:text-white'>
+                        {pathLocation}
+                    </p>
                 </div>
                 <div className='flex items-center gap-4'>
                     <LuSun className='text-gray-500 dark:text-white w-[24px] h-[24px]' />

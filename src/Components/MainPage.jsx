@@ -28,7 +28,7 @@ const MainPage = () => {
                 backgroundImage: `url(${isDarkMode ? bgDarkPattern : bgLightPattern})`
             }}
         >
-            <nav className="Navbar w-[80%] mx-auto flex justify-between">
+            <nav className="Navbar w-[93%] lg:w-[80%] mx-auto flex justify-between">
                 <div className=""></div>
                 <div className='flex items-center gap-4'>
                     <LuSun className='text-gray-500 dark:text-white w-[24px] h-[24px]' />
@@ -44,12 +44,12 @@ const MainPage = () => {
                 </div>
             </nav>
 
-            <div className="contentDiv w-[80%] mx-auto flex flex-col lg:flex-row justify-between items-center gap-8 mt-20">
+            <div className="contentDiv w-[93%] lg:w-[80%] mx-auto flex flex-col lg:flex-row justify-between items-center gap-8 mt-20">
                 <div className="flex-1">
-                    <h3 className='text-[#313e51] dark:text-white text-[64px]'>
+                    <h3 className='text-[#313e51] dark:text-white text-[40px] lg:text-[64px]'>
                         Welcome to the
                     </h3>
-                    <h2 className='text-[#313e51] dark:text-white text-[64px] font-bold'>
+                    <h2 className='text-[#313e51] dark:text-white text-[40px] lg:text-[64px] font-bold'>
                         Frontend Quiz!
                     </h2>
 
